@@ -1,0 +1,69 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch MainTest",
+            "request": "launch",
+            "mainClass": "MainTest",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "extra.Test",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch CodecademyGUI",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "CodeCadame.CodecademyGUI",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch CalculatorGUI",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "Calculator.CalculatorGUI",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch View",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "View",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "Main",
+            "projectName": "Programeren_ab21b24"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "vmArgs": "-p C:\\Download\\Java\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls",
+            "mainClass": "Test",
+            "projectName": "Programeren_ab21b24"
+        }
+    ]
+}
