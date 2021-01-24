@@ -401,11 +401,6 @@ public class CodecademyGUI extends Application {
 
             String SQL = "SELECT " + info + " FROM " + location + " WHERE " + where + " = '" + input + "'";
             
-            // String SQL = "SELECT " + info + " FROM " + location + " WHERE " + info + " = ?";
-            // stmt = con.prepareStatement(SQL);
-            // stmt.setString(1, input);
-            // rs = stmt.executeQuery();
-
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL);
 
@@ -442,11 +437,6 @@ public class CodecademyGUI extends Application {
             con = DriverManager.getConnection(connectionUrl);
 
             String SQL = "SELECT " + info + " FROM " + location + " WHERE "  + email + " = '" + user + "' AND " + content + "= '" + title + "'";
-            
-            // String SQL = "SELECT " + info + " FROM " + location + " WHERE " + info + " = ?";
-            // stmt = con.prepareStatement(SQL);
-            // stmt.setString(1, input);
-            // rs = stmt.executeQuery();
 
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL);
@@ -518,8 +508,9 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "SELECT AVG(ModulesProcent.Procent) AS Avrage, ModulesProcent.Title FROM ModulesProcent INNER JOIN Modules ON Modules.Title=ModulesProcent.Title GROUP BY ModulesProcent.Title, Modules.NaamCursus HAVING Modules.NaamCursus = '"+info+"'";
+            String SQL = "SELECT AVG(ModulesProcent.Procent) AS Avrage, ModulesProcent.Title FROM ModulesProcent INNER JOIN Modules ON Modules.Title=ModulesProcent.Title GROUP BY ModulesProcent.Title, Modules.NaamCursus HAVING Modules.NaamCursus = ?";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, info);
             rs = stmt.executeQuery();
 
             String answer = "";
@@ -554,8 +545,9 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "SELECT COUNT(NaamCursus) AS Count,NaamCursus FROM Inschrijving WHERE Procent = 100 AND NaamCursus = '" + info + "' GROUP BY NaamCursus ORDER BY COUNT(NaamCursus) DESC";
+            String SQL = "SELECT COUNT(NaamCursus) AS Count,NaamCursus FROM Inschrijving WHERE Procent = 100 AND NaamCursus = ? GROUP BY NaamCursus ORDER BY COUNT(NaamCursus) DESC";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, info);
             rs = stmt.executeQuery();
 
             String answer = "";
@@ -589,8 +581,17 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "INSERT INTO Cursist VALUES ('" + name + "', '" + email + "', '" + date + "',  '"+ gender + "', '" + area + "', '" + country + "', '" + zip + "', '" + number + "', '"+ pasword + "')";
+            String SQL = "INSERT INTO Cursist VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, name);
+            stmt.setString(2, email);
+            stmt.setString(3, date);
+            stmt.setString(4, gender);
+            stmt.setString(5, area);
+            stmt.setString(6, country);
+            stmt.setString(7, zip);
+            stmt.setString(8, number);
+            stmt.setString(9, pasword);
             rs = stmt.executeQuery();
         }
 
@@ -615,8 +616,10 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "INSERT INTO Kijken (Email, WebcastID, Titel, Procent) VALUES ('" + email + "', " + id + ", '" + title + "', 0)";
+            String SQL = "INSERT INTO Kijken (Email, WebcastID, Titel, Procent) VALUES (?, " + id + ", ?, 0)";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, email);
+            stmt.setString(2, title);
             rs = stmt.executeQuery();
         }
 
@@ -641,8 +644,10 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "INSERT INTO Inschrijving (NaamCursus, Email, Procent, CertificaatID) VALUES ('" + name + "', '" + email + "', 0, 1)";
+            String SQL = "INSERT INTO Inschrijving (NaamCursus, Email, Procent, CertificaatID) VALUES (?, ?, 0, 1)";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, name);
+            stmt.setString(2, email);
             rs = stmt.executeQuery();
         }
 
@@ -667,8 +672,14 @@ public class CodecademyGUI extends Application {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(connectionUrl);
 
-            String SQL = "INSERT INTO Cursussen VALUES ('" + name + "', '" + subject + "', '" + intro + "',  '"+ level + "'); UPDATE Modules SET NaamCursus = '" + name + "' WHERE Title = '" + module + "';";
+            String SQL = "INSERT INTO Cursussen VALUES (?, ?, ?, ?); UPDATE Modules SET NaamCursus = ? WHERE Title = ?;";
             stmt = con.prepareStatement(SQL);
+            stmt.setString(1, name);
+            stmt.setString(2, subject);
+            stmt.setString(3, intro);
+            stmt.setString(4, level);
+            stmt.setString(5, name);
+            stmt.setString(6, module);
             rs = stmt.executeQuery();
         }
 
